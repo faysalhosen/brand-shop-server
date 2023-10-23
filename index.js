@@ -62,6 +62,26 @@ async function run() {
       res.send(result);
     });
 
+    app.put('/apple/:id', async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upSert: true };
+      const updateApple = req.body;
+      const apple = {
+        $set: {
+          name: updateApple.name,
+          price: updateApple.price,
+          description: updateApple.description,
+          rating: updateApple.rating,
+          URL: updateApple.URL,
+          productType: updateApple.productType,
+          brand: updateApple.brand
+        }
+      }
+      const result = await appleCollection.updateOne(filter, apple, options);
+      res.send(result);
+    });
+
 
 
 
@@ -87,6 +107,25 @@ async function run() {
       res.send(result);
     });
 
+    app.put('/samsung/:id', async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upSert: true };
+      const updateSamsung = req.body;
+      const samsung = {
+        $set: {
+          name: updateSamsung.name,
+          price: updateSamsung.price,
+          description: updateSamsung.description,
+          rating: updateSamsung.rating,
+          URL: updateSamsung.URL,
+          productType: updateSamsung.productType,
+          brand: updateSamsung.brand
+        }
+      }
+      const result = await samsungCollection.updateOne(filter, samsung, options);
+      res.send(result);
+    });
 
 
 
@@ -116,6 +155,26 @@ async function run() {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await asusCollection.findOne(query);
+      res.send(result);
+    });
+
+    app.put('/asus/:id', async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upSert: true };
+      const updateAsus = req.body;
+      const asus = {
+        $set: {
+          name: updateAsus.name,
+          price: updateAsus.price,
+          description: updateAsus.description,
+          rating: updateAsus.rating,
+          URL: updateAsus.URL,
+          productType: updateAsus.productType,
+          brand: updateAsus.brand
+        }
+      }
+      const result = await asusCollection.updateOne(filter, asus, options);
       res.send(result);
     });
 
@@ -156,6 +215,25 @@ async function run() {
       res.send(result);
     });
 
+    app.put('/xiaomi/:id', async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upSert: true };
+      const updateXiaomi = req.body;
+      const xiaomi = {
+        $set: {
+          name: updateXiaomi.name,
+          price: updateXiaomi.price,
+          description: updateXiaomi.description,
+          rating: updateXiaomi.rating,
+          URL: updateXiaomi.URL,
+          productType: updateXiaomi.productType,
+          brand: updateXiaomi.brand
+        }
+      }
+      const result = await xiaomiCollection.updateOne(filter, xiaomi, options);
+      res.send(result);
+    });
 
 
 
@@ -193,6 +271,26 @@ async function run() {
       res.send(result);
     });
 
+    app.put('/sony/:id', async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upSert: true };
+      const updateSony = req.body;
+      const sony = {
+        $set: {
+          name: updateSony.name,
+          price: updateSony.price,
+          description: updateSony.description,
+          rating: updateSony.rating,
+          URL: updateSony.URL,
+          productType: updateSony.productType,
+          brand: updateSony.brand
+        }
+      }
+      const result = await sonyCollection.updateOne(filter, sony, options);
+      res.send(result);
+    });
+
 
 
 
@@ -218,6 +316,26 @@ async function run() {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await realmeCollection.findOne(query);
+      res.send(result);
+    });
+
+    app.put('/realme/:id', async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upSert: true };
+      const updateRealme = req.body;
+      const realme = {
+        $set: {
+          name: updateRealme.name,
+          price: updateRealme.price,
+          description: updateRealme.description,
+          rating: updateRealme.rating,
+          URL: updateRealme.URL,
+          productType: updateRealme.productType,
+          brand: updateRealme.brand
+        }
+      }
+      const result = await realmeCollection.updateOne(filter, realme, options);
       res.send(result);
     });
 
