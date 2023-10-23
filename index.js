@@ -31,6 +31,7 @@ async function run() {
   try {
     await client.connect();
     const brandNameCollection = client.db("brandDB").collection("brandName");
+    const cartCollection = client.db("brandDB").collection('cart')
 
     const appleCollection = client.db("brandDB").collection("apple");
     const samsungCollection = client.db("brandDB").collection("samsung");
@@ -85,9 +86,6 @@ async function run() {
 
 
 
-
-
-
     app.post("/samsung", async (req, res) => {
       const samsung = req.body;
       const result = await samsungCollection.insertOne(samsung);
@@ -126,14 +124,6 @@ async function run() {
       const result = await samsungCollection.updateOne(filter, samsung, options);
       res.send(result);
     });
-
-
-
-
-
-
-
-
 
 
 
@@ -181,21 +171,6 @@ async function run() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     app.post("/xiaomi", async (req, res) => {
       const xiaomi = req.body;
       const result = await xiaomiCollection.insertOne(xiaomi);
@@ -234,20 +209,6 @@ async function run() {
       const result = await xiaomiCollection.updateOne(filter, xiaomi, options);
       res.send(result);
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -295,11 +256,6 @@ async function run() {
 
 
 
-
-
-
-
-
     app.post("/realme", async (req, res) => {
       const realme = req.body;
       const result = await realmeCollection.insertOne(realme);
@@ -342,7 +298,24 @@ async function run() {
 
 
 
+    app.post('/cart', async (req, res) => {
+      const cart = req.body;
+      const result = cartCollection.insertOne(cart);
+      res.send(result);
+    });
 
+    app.get('/cart', async (req, res) => {
+      const cursor = cartCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    app.delete('/cart/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)};
+      const result = await cartCollection.deleteOne(query);
+      res.send(result);
+    });
 
 
 
