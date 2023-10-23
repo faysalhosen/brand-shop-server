@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -42,7 +42,7 @@ async function run() {
 
 
 
-    
+
     app.post("/apple", async (req, res) => {
       const apple = req.body;
       const result = await appleCollection.insertOne(apple);
@@ -53,7 +53,14 @@ async function run() {
       const cursor = appleCollection.find();
       const result = await cursor.toArray();
       res.send(result);
-  });
+    });
+
+    app.get('/apple/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await appleCollection.findOne(query);
+      res.send(result);
+    });
 
 
 
@@ -71,7 +78,14 @@ async function run() {
       const cursor = samsungCollection.find();
       const result = await cursor.toArray();
       res.send(result);
-  });
+    });
+
+    app.get('/samsung/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await samsungCollection.findOne(query);
+      res.send(result);
+    });
 
 
 
@@ -96,7 +110,14 @@ async function run() {
       const cursor = asusCollection.find();
       const result = await cursor.toArray();
       res.send(result);
-  });
+    });
+
+    app.get('/asus/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await asusCollection.findOne(query);
+      res.send(result);
+    });
 
 
 
@@ -126,8 +147,14 @@ async function run() {
       const cursor = xiaomiCollection.find();
       const result = await cursor.toArray();
       res.send(result);
-  });
+    });
 
+    app.get('/xiaomi/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await xiaomiCollection.findOne(query);
+      res.send(result);
+    });
 
 
 
@@ -157,7 +184,14 @@ async function run() {
       const cursor = sonyCollection.find();
       const result = await cursor.toArray();
       res.send(result);
-  });
+    });
+
+    app.get('/sony/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await sonyCollection.findOne(query);
+      res.send(result);
+    });
 
 
 
@@ -178,7 +212,14 @@ async function run() {
       const cursor = realmeCollection.find();
       const result = await cursor.toArray();
       res.send(result);
-  });
+    });
+
+    app.get('/realme/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await realmeCollection.findOne(query);
+      res.send(result);
+    });
 
 
 
